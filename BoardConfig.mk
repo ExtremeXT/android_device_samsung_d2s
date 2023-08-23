@@ -32,6 +32,10 @@ TARGET_PREBUILT_KERNEL := $(DEVICE_PATH)/prebuilt/Image
 BOARD_INCLUDE_RECOVERY_DTBO := true
 BOARD_PREBUILT_DTBOIMAGE := $(DEVICE_PATH)/prebuilt/recovery_dtbo
 
+# RAMDisk Compression
+LZMA_RAMDISK_TARGETS := recovery,boot
+BOARD_RAMDISK_USE_LZMA := true
+
 BOARD_KERNEL_CMDLINE := \
     androidboot.hardware=exynos9825 \
     androidboot.selinux=permissive

@@ -9,10 +9,10 @@
 $(call inherit-product, $(SRC_TARGET_DIR)/product/emulated_storage.mk)
 
 # VNDK
-PRODUCT_TARGET_VNDK_VERSION := 31
+PRODUCT_TARGET_VNDK_VERSION := 33
 
 # API
-PRODUCT_SHIPPING_API_LEVEL := 28
+PRODUCT_SHIPPING_API_LEVEL := 30
 
 # No dynamic partitions
 PRODUCT_USE_DYNAMIC_PARTITIONS := false

@@ -38,9 +38,6 @@
 /dev/v4l-subdev21         0660   system     graphics
 /dev/v4l-subdev32         0660   system     graphics
 
-#score
-/dev/score                0660   cameraserver camera
-
 # gscalers
 /dev/video23              0660   media      graphics
 /dev/video26              0660   media      graphics
@@ -148,8 +145,8 @@
 /dev/is_tuning_json       0660   cameraserver   camera
 /dev/is_tuning_socket     0660   cameraserver   camera
 
-# IVA
-/dev/iva_ctl              0660   cameraserver   camera
+# dmabuf
+/dev/dmabuf_trace   0660   system   system
 
 # For FRP
 /dev/block/by-name/persist	      0600   system          system
@@ -157,11 +154,12 @@
 # jpeg
 /dev/m2m1shot_jpeg	      0660   media          media
 /dev/video12              0660   cameraserver   media
+/dev/jsqz                 0660   mediacodec     camera
 
 # audio
 /dev/seiren               0660   system     audio
 
-# TEEGRIS
+# TEEgris
 /dev/tzdev                0666   system     system
 /dev/tziwsock             0666   system     system
 /dev/tziwshmem            0660   system     system
@@ -172,45 +170,36 @@
 # Secure MEM driver
 /dev/s5p-smem             0660   system     system
 
-# cbd
-/dev/block/sda5           0400   radio      radio
-/dev/umts_ramdump0        0660   radio      radio
+# dev ril bridge
+/dev/drb	              0660   system     radio
+
+# Modem Interface
+/dev/block/by-name/radio    0660   system     radio
+/dev/block/by-name/cp_debug 0660   radio      system
+/dev/umts*                  0660   system     radio
+/dev/umts_csd               0660   system     loop_radio
+/dev/smd4                   0660   system     radio
+/dev/ramdump_memshare       0660   system     radio
+/dev/umts_ciq*              0660   system     bridge_rw
 
 # DM tools
 /dev/umts_dm0             0660   system      system
 /dev/umts_router          0660   system      system
 /dev/ttyGS0               0660   system      system
 /dev/ttyGS1               0660   system      system
-/dev/ttyGS3               0660   system      system
 
 # NPU
 /dev/vertex10             0660   system      system
 
-# Modem Interface
-/dev/block/platform/13d60000.ufs/by-name/radio        0660 system   radio
-/dev/block/platform/13d60000.ufs/by-name/radio2       0660 system   radio
-/dev/block/platform/13d60000.ufs/by-name/cp_debug     0660 radio    system
-/dev/block/platform/13d60000.ufs/by-name/cp2_debug    0660 radio    system
-/sys/devices/platform/10000.mif_pdata	sim/ds_detect 0660 radio    system
-/dev/umts*              0660   system     radio
-/dev/ipc*               0660   system     radio
-/dev/5g*                0660   system     radio
-/dev/umts_csd           0660   system     loop_radio
-/dev/smd4               0660   system     radio
-/dev/ramdump_memshare   0660   system     radio
-/dev/modem_boot_spi     0660   system     radio
-
-# dev ril bridge
-/dev/drb                0660   system     radio
-
 # SIPC 5G devices
-/dev/nr_ramdump0        0660   radio      radio
-/dev/nr_dm0             0660   system      system
-/dev/nr_router          0660   system      system
-/dev/nr_boot0           0660   radio      radio
-/dev/nr_ipc0            0660   radio      radio
-/dev/nr_ipc1            0660   radio      radio
-/dev/nr_rfs0            0660   radio      radio
+/dev/block/sda15        0400   radio      radio
+/dev/5g_ramdump0        0660   radio      radio
+/dev/5g_dm0             0660   system      system
+/dev/5g_router          0660   system      system
+/dev/5g_boot0           0660   radio      radio
+/dev/5g_ipc0            0660   radio      radio
+/dev/5g_ipc1            0660   radio      radio
+/dev/5g_rfs0            0660   radio      radio
 /dev/modem_boot_spi     0660   radio      radio
 
 # xlat control
@@ -239,11 +228,18 @@
 # Voice Trigger Sound (VTS Misc)
 /dev/vts_fio_dev         0660   audioserver   system
 
-# Reactivation lock
-/dev/block/platform/13d60000.ufs/by-name/steady    0660    system    system
-
 # Google FRP solution
-/dev/block/platform/13d60000.ufs/by-name/persistent    0660    system    system
+/dev/block/by-name/persistent	0660	system	system
+
+# IVA
+/dev/iva_ctl              0660   cameraserver   camera
+
+# FRP
+/dev/block/by-name/frp          0660   root     system
+
+# Reactivation lock
+/dev/block/by-name/steady	0660	system	system
+
 
 # Sensor sysfs properties
 /sys/devices/virtual/input/input*    poll_delay    0660    system    radio
@@ -269,3 +265,4 @@
 /dev/bbd_patch            0660   system     system
 /dev/bbd_urgent_patch     0660   system     system
 /dev/ttyBCM*              0660   system     system
+

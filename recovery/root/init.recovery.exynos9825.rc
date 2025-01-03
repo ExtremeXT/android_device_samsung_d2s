@@ -3,6 +3,9 @@ import /init.recovery.teegris.rc
 on init
     write /proc/sys/kernel/hung_task_timeout_secs 0
 
+on early-init
+    mkdir /mnt/vendor/efs 0771 radio system
+
 on late-init
     setprop service.adb.root 1
     setprop sys.usb.configfs 1
@@ -12,14 +15,14 @@ on fs
     wait /dev/block/platform/13d60000.ufs
     symlink /dev/block/platform/13d60000.ufs /dev/block/bootdevice
     symlink /dev/block/platform/13d60000.ufs/by-name /dev/block/by-name    
-    start hwservicemanager
+#    start hwservicemanager
 
-service hwservicemanager /system/bin/hwservicemanager
-    user root
-    group root
-    disabled
-    onrestart setprop hwservicemanager.ready false
-    seclabel u:r:recovery:s0
+#service hwservicemanager /system/bin/hwservicemanager
+#    user root
+#    group root
+#    disabled
+#    onrestart setprop hwservicemanager.ready false
+#    seclabel u:r:recovery:s0
 
 on boot
     start health-hal-2-1
